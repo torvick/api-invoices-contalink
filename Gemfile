@@ -45,3 +45,4 @@ group :development do
   # gem "spring"
 end
 
+gem 'will_paginate', '~> 4.0'
