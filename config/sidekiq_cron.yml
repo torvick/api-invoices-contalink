@@ -1,0 +1,6 @@
+top_selling_days_daily:
+  cron: "0 8 * * *"
+  class: "TopSellingDaysEmailJob"
+  queue: default
+  timezone: "America/Mexico_City"
+  description: "Enviar Top 10 días con más venta (08:00 CDMX)"

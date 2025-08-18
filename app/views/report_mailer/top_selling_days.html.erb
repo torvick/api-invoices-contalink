@@ -1,0 +1,15 @@
+<h2>Top 10</h2>
+<table border="1" cellpadding="6" cellspacing="0">
+  <tr>
+    <th>Top</th>
+    <th>Dia</th>
+    <th>Venta total</th>
+  </tr>
+  <% @sales.each do |sale| %>
+    <tr>
+      <td><%= sale[:top] %></td>
+      <td><%= sale[:day] %></td>
+      <td>$<%= sprintf('%.2f', sale[:amount]) %></td>
+    </tr>
+  <% end %>
+</table>

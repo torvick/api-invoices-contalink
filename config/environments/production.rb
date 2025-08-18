@@ -64,7 +64,18 @@ Rails.application.configure do
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "api_invoices_contalink_production"
 
-  config.action_mailer.perform_caching = false
+  config.action_controller.perform_caching = true
+
+  config.cache_store = :redis_cache_store, {
+    url: ENV.fetch("REDIS_URL"),
+    compress: true,
+    pool_size: 5,
+    pool_timeout: 5,
+    reconnect_attempts: 3,
+    error_handler: -> (method:, returning:, exception:) {
+      Rails.logger.warn("RedisCacheStore error: #{method} #{exception.class}: #{exception.message}")
+    }
+  }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.

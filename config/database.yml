@@ -7,6 +7,7 @@ default: &default
   username: <%= Rails.application.credentials.dig(:db, :username) %>
   password: <%= Rails.application.credentials.dig(:db, :password) %>
   variables:
+    default_transaction_read_only: on
     statement_timeout: 5000
 
 development:
@@ -15,7 +16,7 @@ development:
 
 test:
   <<: *default
-  database: <%= Rails.application.credentials.dig(:db, :name) %>_test
+  database: <%= Rails.application.credentials.dig(:db, :name) %>
 
 production:
   <<: *default

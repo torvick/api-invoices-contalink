@@ -1,0 +1,5 @@
+Top 10
+
+<% @sales.each do |sale| %>
+- Top: <%= sale[:top] %> ---- <%= sale[:day] %>: $<%= sprintf('%.2f', sale[:amount]) %>
+<% end %>

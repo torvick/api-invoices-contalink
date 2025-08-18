@@ -14,4 +14,9 @@ Rails.application.routes.draw do
       match '*unmatched', to: 'errors#not_found', via: :all
     end
   end
+
+  if Rails.env.development?
+    require "sidekiq/web"
+    mount Sidekiq::Web => "/sidekiq"
+  end
 end
