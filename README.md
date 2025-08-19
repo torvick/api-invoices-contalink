@@ -69,7 +69,7 @@ bin/rails dev:cache
 
 **Rails**
 ```bash
-bin/rails s -p 3001
+bin/rails s
 ```
 
 **Sidekiq**
@@ -79,7 +79,7 @@ bundle exec sidekiq -C config/sidekiq.yml
 ```
 
 ### 4) Panel de Sidekiq
-Abre: `http://localhost:3001/sidekiq`
+Abre: `http://localhost:3000/sidekiq`
 
 - Pestaña **Cron**: debe verse el job diario (ej. `top_selling_days_daily`).
 
@@ -121,7 +121,7 @@ Abre: `http://localhost:3001/sidekiq`
 
 **Ejemplo cURL**
 ```bash
-curl "http://localhost:3001/api/v1/invoices?start_date=2022-01-01&end_date=2022-01-10&status=Cancelado&page=1&per_page=200&sort_by=invoice_date&sort_dir=desc"
+curl "http://localhost:3000/api/v1/invoices?start_date=2022-01-01&end_date=2022-01-10&status=Cancelado&page=1&per_page=200&sort_by=invoice_date&sort_dir=desc"
 ```
 
 ---

@@ -8,7 +8,10 @@ class Invoice < ApplicationRecord
     status.blank? ? all : where(status: status)
   }
 
-  scope :by_invoice_number, ->(number) {
-    number.blank? ? all : where(invoice_number: number)
-  }
+  scope :by_invoice_number, ->(number) do
+    next all if number.blank?
+
+    term = ActiveRecord::Base.sanitize_sql_like(number.to_s.strip)
+    where("invoice_number ILIKE ?", "%#{term}%")
+  end
 end
